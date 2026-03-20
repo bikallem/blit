@@ -66,6 +66,17 @@ MOONBIT_FFI_EXPORT int32_t bikallem_blit_match_length(
   return i;
 }
 
+// Subtract `delta` from each element of a FixedArray[Int] (int64 array),
+// clamping to `floor` (typically -1). Processes 4 elements at a time.
+// MoonBit native Int is int64_t. Array layout: [header...][elem0][elem1]...
+MOONBIT_FFI_EXPORT void bikallem_blit_shift_int_array(
+    int64_t *arr, int32_t len, int64_t delta, int64_t floor) {
+  for (int32_t i = 0; i < len; i++) {
+    int64_t v = arr[i] - delta;
+    arr[i] = v < floor ? floor : v;
+  }
+}
+
 // Allocate a FixedArray[Byte] without zeroing.
 // Uses moonbit_make_bytes_raw which skips memset.
 MOONBIT_EXPORT moonbit_bytes_t moonbit_make_bytes_raw(int32_t len);

@@ -69,6 +69,20 @@ pub fn match_length_bytes(
 }
 
 ///|
+/// Subtract `delta` from each of `len` elements, clamping to `floor`.
+pub fn shift_int_array(
+  arr : FixedArray[Int],
+  len : Int,
+  delta : Int,
+  floor : Int,
+) -> Unit {
+  for i in 0..<len {
+    let v = arr[i] - delta
+    arr[i] = if v < floor { floor } else { v }
+  }
+}
+
+///|
 /// Allocate a FixedArray[Byte] without zeroing memory.
 /// The caller MUST fully initialize the buffer before reading from it.
 pub fn make_uninit(len : Int) -> FixedArray[Byte] {

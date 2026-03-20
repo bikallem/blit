@@ -57,6 +57,17 @@ pub extern "c" fn match_length_bytes(
 ) -> Int = "bikallem_blit_match_length"
 
 ///|
+/// Subtract `delta` from each of `len` elements, clamping to `floor`.
+/// Used for hash-table window shifting in DEFLATE.
+#borrow(arr)
+pub extern "c" fn shift_int_array(
+  arr : FixedArray[Int],
+  len : Int,
+  delta : Int,
+  floor : Int,
+) -> Unit = "bikallem_blit_shift_int_array"
+
+///|
 /// Allocate a FixedArray[Byte] without zeroing memory.
 /// The caller MUST fully initialize the buffer before reading from it.
 pub extern "c" fn make_uninit(len : Int) -> FixedArray[Byte] = "bikallem_blit_make_uninit"
