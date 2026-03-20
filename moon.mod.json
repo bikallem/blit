@@ -1,0 +1,14 @@
+{
+  "name": "bikallem/blit",
+  "version": "0.1.0",
+  "readme": "README.md",
+  "license": "Apache-2.0",
+  "keywords": [
+    "blit",
+    "memcpy",
+    "memmove",
+    "bytes"
+  ],
+  "description": "Fast byte-level blit, fill, match, and uninit allocation for MoonBit",
+  "source": "src"
+}

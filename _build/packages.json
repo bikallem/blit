@@ -1,0 +1,91 @@
+{
+  "source_dir": "/home/blem/projects/blit",
+  "name": "bikallem/blit",
+  "packages": [
+    {
+      "is-main": false,
+      "is-third-party": false,
+      "root-path": "/home/blem/projects/blit/src",
+      "root": "bikallem/blit",
+      "rel": "",
+      "files": {
+        "/home/blem/projects/blit/src/blit.mbt": {
+          "backend": [
+            "Wasm",
+            "WasmGC",
+            "Js",
+            "Native",
+            "LLVM"
+          ],
+          "optlevel": [
+            "Release",
+            "Debug"
+          ]
+        },
+        "/home/blem/projects/blit/src/blit_native.mbt": {
+          "backend": [
+            "Native"
+          ],
+          "optlevel": [
+            "Release",
+            "Debug"
+          ]
+        },
+        "/home/blem/projects/blit/src/blit_non_native.mbt": {
+          "backend": [
+            "Wasm",
+            "WasmGC",
+            "Js"
+          ],
+          "optlevel": [
+            "Release",
+            "Debug"
+          ]
+        }
+      },
+      "wbtest-files": {},
+      "test-files": {
+        "/home/blem/projects/blit/src/blit_test.mbt": {
+          "backend": [
+            "Wasm",
+            "WasmGC",
+            "Js",
+            "Native",
+            "LLVM"
+          ],
+          "optlevel": [
+            "Release",
+            "Debug"
+          ]
+        }
+      },
+      "mbt-md-files": {},
+      "deps": [
+        {
+          "path": "moonbitlang/core/prelude",
+          "alias": "prelude",
+          "fspath": "/home/blem/.moon/lib/core/prelude"
+        }
+      ],
+      "wbtest-deps": [
+        {
+          "path": "moonbitlang/core/prelude",
+          "alias": "prelude",
+          "fspath": "/home/blem/.moon/lib/core/prelude"
+        }
+      ],
+      "test-deps": [
+        {
+          "path": "moonbitlang/core/prelude",
+          "alias": "prelude",
+          "fspath": "/home/blem/.moon/lib/core/prelude"
+        }
+      ],
+      "artifact": "/home/blem/projects/blit/_build/native/release/check/blit.mi"
+    }
+  ],
+  "deps": [],
+  "backend": "native",
+  "opt_level": "release",
+  "source": "src"
+}

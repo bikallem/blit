@@ -1,0 +1,10 @@
+-I/home/blem/.moon/include
+-L/home/blem/.moon/lib
+-g
+-DMOONBIT_NATIVE_NO_SYS_HEADER
+-fPIC
+-DMOONBIT_USE_SHARED_RUNTIME
+/home/blem/projects/blit/_build/native/debug/test/libruntime.so
+/home/blem/projects/blit/_build/native/debug/test/libblit.so
+-run
+/home/blem/projects/blit/_build/native/debug/test/blit.internal_test.c
