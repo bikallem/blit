@@ -7,11 +7,13 @@ struct Buffer {
 }
 
 ///|
+/// Create a new buffer with the given initial capacity.
 pub fn Buffer::new(size_hint? : Int = 256) -> Buffer {
   { buf: make_uninit(size_hint), pos: 0 }
 }
 
 ///|
+/// Ensure space for at least `additional` more bytes. Grows with doubling strategy.
 pub fn Buffer::ensure_capacity(self : Buffer, additional : Int) -> Unit {
   let required = self.pos + additional
   if required > self.buf.length() {
@@ -26,6 +28,7 @@ pub fn Buffer::ensure_capacity(self : Buffer, additional : Int) -> Unit {
 }
 
 ///|
+/// Append a single byte.
 pub fn Buffer::write_byte(self : Buffer, b : Byte) -> Unit {
   self.ensure_capacity(1)
   self.buf.unsafe_set(self.pos, b)
@@ -33,12 +36,14 @@ pub fn Buffer::write_byte(self : Buffer, b : Byte) -> Unit {
 }
 
 ///|
+/// Append a single byte without capacity check. Caller must ensure capacity.
 pub fn Buffer::write_byte_unchecked(self : Buffer, b : Byte) -> Unit {
   self.buf.unsafe_set(self.pos, b)
   self.pos += 1
 }
 
 ///|
+/// Append all bytes from `src`.
 pub fn Buffer::write_bytes(self : Buffer, src : Bytes) -> Unit {
   let len = src.length()
   self.ensure_capacity(len)
@@ -47,6 +52,7 @@ pub fn Buffer::write_bytes(self : Buffer, src : Bytes) -> Unit {
 }
 
 ///|
+/// Append all bytes from `src`.
 pub fn Buffer::write_bytesview(self : Buffer, src : BytesView) -> Unit {
   let len = src.length()
   self.ensure_capacity(len)
@@ -55,6 +61,7 @@ pub fn Buffer::write_bytesview(self : Buffer, src : BytesView) -> Unit {
 }
 
 ///|
+/// Append `len` bytes from `src` starting at `offset`.
 pub fn Buffer::write_fixed(
   self : Buffer,
   src : FixedArray[Byte],
@@ -67,6 +74,7 @@ pub fn Buffer::write_fixed(
 }
 
 ///|
+/// Read byte at absolute position. Bounds-check free.
 pub fn Buffer::get_byte(self : Buffer, pos : Int) -> Byte {
   self.buf.unsafe_get(pos)
 }
