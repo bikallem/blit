@@ -22,9 +22,28 @@ pub fn match_length_bv(BytesView, Int, Int, Int) -> Int
 
 pub fn match_length_bytes(Bytes, Int, Bytes, Int, Int) -> Int
 
+pub fn shift_int_array(FixedArray[Int], Int, Int, Int) -> Unit
+
 // Errors
 
 // Types and methods
+pub struct Buffer {
+  mut buf : FixedArray[Byte]
+  mut pos : Int
+}
+pub fn Buffer::copy_from_self(Self, Int, Int) -> Unit
+pub fn Buffer::data(Self) -> FixedArray[Byte]
+pub fn Buffer::ensure_capacity(Self, Int) -> Unit
+pub fn Buffer::get_byte(Self, Int) -> Byte
+pub fn Buffer::length(Self) -> Int
+pub fn Buffer::new(size_hint? : Int) -> Self
+pub fn Buffer::reset(Self) -> Unit
+pub fn Buffer::to_bytes(Self) -> Bytes
+pub fn Buffer::write_byte(Self, Byte) -> Unit
+pub fn Buffer::write_byte_unchecked(Self, Byte) -> Unit
+pub fn Buffer::write_bytes(Self, Bytes) -> Unit
+pub fn Buffer::write_bytesview(Self, BytesView) -> Unit
+pub fn Buffer::write_fixed(Self, FixedArray[Byte], Int, Int) -> Unit
 
 // Type aliases
 
