@@ -1,7 +1,7 @@
 ///|
 /// Growable byte buffer backed by FixedArray[Byte].
 /// All internal access is bounds-check free.
-pub struct Buffer {
+struct Buffer {
   mut buf : FixedArray[Byte]
   mut pos : Int
 }
