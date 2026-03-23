@@ -36,6 +36,7 @@ pub fn Buffer::length(Self) -> Int
 pub fn Buffer::new(size_hint? : Int) -> Self
 pub fn Buffer::reset(Self) -> Unit
 pub fn Buffer::to_bytes(Self) -> Bytes
+pub fn Buffer::unsafe_advance(Self, Int) -> Unit
 pub fn Buffer::write_byte(Self, Byte) -> Unit
 pub fn Buffer::write_byte_unchecked(Self, Byte) -> Unit
 pub fn Buffer::write_bytes(Self, Bytes) -> Unit

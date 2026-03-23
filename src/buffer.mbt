@@ -122,6 +122,12 @@ pub fn Buffer::to_bytes(self : Buffer) -> Bytes {
 }
 
 ///|
+/// Advance write position by `n`. Caller must have written directly to `data()`.
+pub fn Buffer::unsafe_advance(self : Buffer, n : Int) -> Unit {
+  self.pos += n
+}
+
+///|
 /// Reset write position to 0. Reuses allocated memory.
 pub fn Buffer::reset(self : Buffer) -> Unit {
   self.pos = 0
