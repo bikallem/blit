@@ -7,7 +7,7 @@ pub struct Buffer {
 }
 
 ///|
-pub fn Buffer::new(size_hint~ : Int = 256) -> Buffer {
+pub fn Buffer::new(size_hint? : Int = 256) -> Buffer {
   { buf: make_uninit(size_hint), pos: 0 }
 }
 
