@@ -1,6 +1,6 @@
 # blit
 
-Fast byte-level blit, fill, match, and uninit allocation for MoonBit.
+Fast byte-level blit, fill, match, uninit allocation, and growable byte buffer for MoonBit.
 
 On the native backend, operations use C FFI (`memmove`, `memset`, 8-byte chunk matching) for vectorized performance. On JS/Wasm backends, pure MoonBit fallback implementations are used.
 
@@ -43,6 +43,38 @@ moon add bikallem/blit
 
 // Count matching bytes within a BytesView
 @blit.match_length_bv(src, a, b, max_len)
+```
+
+### Buffer
+
+Growable byte buffer backed by `FixedArray[Byte]`. All internal access is bounds-check free. Uses uninit allocation and blit-based growth.
+
+```moonbit
+let buf = @blit.Buffer::new(size_hint=1024)
+
+// Write
+buf.write_byte(b'a')
+buf.write_bytes(b"hello")
+buf.write_bytesview(some_bytes[1:4])
+buf.write_fixed(fixed_arr, offset, len)
+
+// Unchecked write (caller must ensure capacity)
+buf.ensure_capacity(10)
+buf.write_byte_unchecked(b'x')
+
+// Read
+buf.get_byte(0)         // bounds-check free read
+buf.length()            // current byte count
+buf.data()              // backing FixedArray[Byte]
+
+// Internal copy (handles overlapping regions)
+buf.copy_from_self(src_pos, len)
+
+// Finalize: make_uninit(pos) + blit + unsafe_reinterpret_as_bytes
+let bytes = buf.to_bytes()
+
+// Reuse allocated memory
+buf.reset()
 ```
 
 ### Uninit Allocation
